@@ -40,10 +40,11 @@ namespace _19092023
             MessageBox.Show("Aggiunto");
             Nome.Clear();
             Prezzo.Clear();
+            visualizza(p);
         }
         public string prodString(prodotto p)
         {
-            return "Nome:" + p.nome + " prezzo:" + p.prezzo.ToString();
+            return "Nome:" + p.nome + " prezzo:" + p.prezzo.ToString() + "€";
         }
         public void visualizza(prodotto[] pp)
         {
@@ -56,22 +57,49 @@ namespace _19092023
 
             }
         }
-
-        private void Visual_Click(object sender, EventArgs e)
-        {
-
-            visualizza(p);
-        }
-
+        public string Ricerc;
         private void Modifica_Click(object sender, EventArgs e)
         {
-            string Ricerc = Ricerca.Text;
+            Ricerc = Ricerca.Text;
             for (int i = 0; i < p.Length; ++i)
             {
                 if (p[i].nome == Ricerc)
                 {
                     p[i].nome = NuovoNome.Text;
                     MessageBox.Show("Modificato");
+                    Ricerca.Clear();
+                    NuovoNome.Clear();
+                    visualizza(p);
+                    break;
+                }
+            }
+        }
+        private void ModificaPrezzo_Click(object sender, EventArgs e)
+        {
+            Ricerc = Ricerca.Text;
+            for (int i = 0; i < p.Length; ++i)
+            {
+                if (p[i].nome == Ricerc)
+                {
+                    p[i].prezzo = float.Parse(NuovoPrezzo.Text);
+                    MessageBox.Show("Modificato");
+                    Ricerca.Clear();
+                    NuovoPrezzo.Clear();
+                    visualizza(p);
+                    break;
+                }
+            }
+        }
+
+        private void Cancella_Click(object sender, EventArgs e)
+        {
+            Ricerc = Ricerca.Text;
+            for (int i = 0; i < p.Length; ++i)
+            {
+                if (p[i].nome == Ricerc)
+                {
+                    
+                    MessageBox.Show("Eliminato");
                     break;
                 }
             }

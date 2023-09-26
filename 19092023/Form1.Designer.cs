@@ -34,12 +34,15 @@
             this.Prezzo = new System.Windows.Forms.TextBox();
             this.Aggiungi = new System.Windows.Forms.Button();
             this.ElencoProdotti = new System.Windows.Forms.ListBox();
-            this.Visual = new System.Windows.Forms.Button();
-            this.Modifica = new System.Windows.Forms.Button();
+            this.ModificaNome = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.NuovoNome = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Ricerca = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.NuovoPrezzo = new System.Windows.Forms.TextBox();
+            this.ModificaPrezzo = new System.Windows.Forms.Button();
+            this.Elimina = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -97,27 +100,16 @@
             this.ElencoProdotti.Size = new System.Drawing.Size(286, 384);
             this.ElencoProdotti.TabIndex = 5;
             // 
-            // Visual
+            // ModificaNome
             // 
-            this.Visual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Visual.Location = new System.Drawing.Point(298, 16);
-            this.Visual.Name = "Visual";
-            this.Visual.Size = new System.Drawing.Size(110, 65);
-            this.Visual.TabIndex = 6;
-            this.Visual.Text = "Visualizza";
-            this.Visual.UseVisualStyleBackColor = true;
-            this.Visual.Click += new System.EventHandler(this.Visual_Click);
-            // 
-            // Modifica
-            // 
-            this.Modifica.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Modifica.Location = new System.Drawing.Point(235, 96);
-            this.Modifica.Name = "Modifica";
-            this.Modifica.Size = new System.Drawing.Size(110, 62);
-            this.Modifica.TabIndex = 7;
-            this.Modifica.Text = "Modifica";
-            this.Modifica.UseVisualStyleBackColor = true;
-            this.Modifica.Click += new System.EventHandler(this.Modifica_Click);
+            this.ModificaNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ModificaNome.Location = new System.Drawing.Point(235, 96);
+            this.ModificaNome.Name = "ModificaNome";
+            this.ModificaNome.Size = new System.Drawing.Size(117, 58);
+            this.ModificaNome.TabIndex = 7;
+            this.ModificaNome.Text = "Modifica il nome";
+            this.ModificaNome.UseVisualStyleBackColor = true;
+            this.ModificaNome.Click += new System.EventHandler(this.Modifica_Click);
             // 
             // label2
             // 
@@ -153,17 +145,59 @@
             this.Ricerca.Size = new System.Drawing.Size(215, 20);
             this.Ricerca.TabIndex = 14;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(-1, 180);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(173, 16);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Inserisci il nuovo prezzo";
+            // 
+            // NuovoPrezzo
+            // 
+            this.NuovoPrezzo.Location = new System.Drawing.Point(2, 199);
+            this.NuovoPrezzo.Name = "NuovoPrezzo";
+            this.NuovoPrezzo.Size = new System.Drawing.Size(170, 20);
+            this.NuovoPrezzo.TabIndex = 16;
+            // 
+            // ModificaPrezzo
+            // 
+            this.ModificaPrezzo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ModificaPrezzo.Location = new System.Drawing.Point(235, 160);
+            this.ModificaPrezzo.Name = "ModificaPrezzo";
+            this.ModificaPrezzo.Size = new System.Drawing.Size(117, 59);
+            this.ModificaPrezzo.TabIndex = 17;
+            this.ModificaPrezzo.Text = "Modifica il prezzo";
+            this.ModificaPrezzo.UseVisualStyleBackColor = true;
+            this.ModificaPrezzo.Click += new System.EventHandler(this.ModificaPrezzo_Click);
+            // 
+            // Elimina
+            // 
+            this.Elimina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Elimina.Location = new System.Drawing.Point(28, 242);
+            this.Elimina.Name = "Elimina";
+            this.Elimina.Size = new System.Drawing.Size(117, 66);
+            this.Elimina.TabIndex = 18;
+            this.Elimina.Text = "Elimina";
+            this.Elimina.UseVisualStyleBackColor = true;
+            this.Elimina.Click += new System.EventHandler(this.Cancella_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Elimina);
+            this.Controls.Add(this.ModificaPrezzo);
+            this.Controls.Add(this.NuovoPrezzo);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.Ricerca);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.NuovoNome);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.Modifica);
-            this.Controls.Add(this.Visual);
+            this.Controls.Add(this.ModificaNome);
             this.Controls.Add(this.ElencoProdotti);
             this.Controls.Add(this.Aggiungi);
             this.Controls.Add(this.Prezzo);
@@ -185,12 +219,15 @@
         private System.Windows.Forms.TextBox Prezzo;
         private System.Windows.Forms.Button Aggiungi;
         private System.Windows.Forms.ListBox ElencoProdotti;
-        private System.Windows.Forms.Button Visual;
-        private System.Windows.Forms.Button Modifica;
+        private System.Windows.Forms.Button ModificaNome;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox NuovoNome;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox Ricerca;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox NuovoPrezzo;
+        private System.Windows.Forms.Button ModificaPrezzo;
+        private System.Windows.Forms.Button Elimina;
     }
 }
 
