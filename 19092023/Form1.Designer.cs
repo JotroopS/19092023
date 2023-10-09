@@ -42,7 +42,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.NuovoPrezzo = new System.Windows.Forms.TextBox();
             this.ModificaPrezzo = new System.Windows.Forms.Button();
-            this.Elimina = new System.Windows.Forms.Button();
+            this.Cancella = new System.Windows.Forms.Button();
+            this.Ordina = new System.Windows.Forms.Button();
+            this.Percent = new System.Windows.Forms.Button();
+            this.Perce = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Salva = new System.Windows.Forms.Button();
+            this.Leggi = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -109,7 +115,7 @@
             this.ModificaNome.TabIndex = 7;
             this.ModificaNome.Text = "Modifica il nome";
             this.ModificaNome.UseVisualStyleBackColor = true;
-            this.ModificaNome.Click += new System.EventHandler(this.Modifica_Click);
+            this.ModificaNome.Click += new System.EventHandler(this.ModificaNome_Click);
             // 
             // label2
             // 
@@ -173,23 +179,90 @@
             this.ModificaPrezzo.UseVisualStyleBackColor = true;
             this.ModificaPrezzo.Click += new System.EventHandler(this.ModificaPrezzo_Click);
             // 
-            // Elimina
+            // Cancella
             // 
-            this.Elimina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Elimina.Location = new System.Drawing.Point(28, 242);
-            this.Elimina.Name = "Elimina";
-            this.Elimina.Size = new System.Drawing.Size(117, 66);
-            this.Elimina.TabIndex = 18;
-            this.Elimina.Text = "Elimina";
-            this.Elimina.UseVisualStyleBackColor = true;
-            this.Elimina.Click += new System.EventHandler(this.Cancella_Click);
+            this.Cancella.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cancella.Location = new System.Drawing.Point(183, 225);
+            this.Cancella.Name = "Cancella";
+            this.Cancella.Size = new System.Drawing.Size(117, 66);
+            this.Cancella.TabIndex = 18;
+            this.Cancella.Text = "Elimina";
+            this.Cancella.UseVisualStyleBackColor = true;
+            this.Cancella.Click += new System.EventHandler(this.Cancella_Click);
+            // 
+            // Ordina
+            // 
+            this.Ordina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Ordina.Location = new System.Drawing.Point(306, 225);
+            this.Ordina.Name = "Ordina";
+            this.Ordina.Size = new System.Drawing.Size(117, 66);
+            this.Ordina.TabIndex = 19;
+            this.Ordina.Text = "Ordina";
+            this.Ordina.UseVisualStyleBackColor = true;
+            this.Ordina.Click += new System.EventHandler(this.Ordina_Click);
+            // 
+            // Percent
+            // 
+            this.Percent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Percent.Location = new System.Drawing.Point(174, 297);
+            this.Percent.Name = "Percent";
+            this.Percent.Size = new System.Drawing.Size(134, 75);
+            this.Percent.TabIndex = 20;
+            this.Percent.Text = "Aggiungi/sottrai";
+            this.Percent.UseVisualStyleBackColor = true;
+            this.Percent.Click += new System.EventHandler(this.Percent_Click);
+            // 
+            // Perce
+            // 
+            this.Perce.Location = new System.Drawing.Point(2, 271);
+            this.Perce.Name = "Perce";
+            this.Perce.Size = new System.Drawing.Size(162, 20);
+            this.Perce.TabIndex = 21;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(-1, 252);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(168, 16);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Inserisci la percentuale";
+            // 
+            // Salva
+            // 
+            this.Salva.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Salva.Location = new System.Drawing.Point(314, 297);
+            this.Salva.Name = "Salva";
+            this.Salva.Size = new System.Drawing.Size(109, 75);
+            this.Salva.TabIndex = 23;
+            this.Salva.Text = "Salva";
+            this.Salva.UseVisualStyleBackColor = true;
+            this.Salva.Click += new System.EventHandler(this.Salva_Click);
+            // 
+            // Leggi
+            // 
+            this.Leggi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Leggi.Location = new System.Drawing.Point(314, 381);
+            this.Leggi.Name = "Leggi";
+            this.Leggi.Size = new System.Drawing.Size(108, 56);
+            this.Leggi.TabIndex = 24;
+            this.Leggi.Text = "LeggiFile";
+            this.Leggi.UseVisualStyleBackColor = true;
+            this.Leggi.Click += new System.EventHandler(this.Leggi_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Elimina);
+            this.Controls.Add(this.Leggi);
+            this.Controls.Add(this.Salva);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.Perce);
+            this.Controls.Add(this.Percent);
+            this.Controls.Add(this.Ordina);
+            this.Controls.Add(this.Cancella);
             this.Controls.Add(this.ModificaPrezzo);
             this.Controls.Add(this.NuovoPrezzo);
             this.Controls.Add(this.label4);
@@ -227,7 +300,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox NuovoPrezzo;
         private System.Windows.Forms.Button ModificaPrezzo;
-        private System.Windows.Forms.Button Elimina;
+        private System.Windows.Forms.Button Cancella;
+        private System.Windows.Forms.Button Ordina;
+        private System.Windows.Forms.Button Percent;
+        private System.Windows.Forms.TextBox Perce;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button Salva;
+        private System.Windows.Forms.Button Leggi;
     }
 }
 

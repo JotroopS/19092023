@@ -6,6 +6,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,7 +17,7 @@ namespace _19092023
         public struct prodotto
         {
             public string nome;
-            public float prezzo;
+            public double prezzo;
         }
         public prodotto[] p;
         public int dim;
@@ -32,10 +33,10 @@ namespace _19092023
         }
 
 
-        private void Aggiungi_Click(object sender, EventArgs e)
+        public void Aggiungi_Click(object sender, EventArgs e)
         {
             p[dim].nome = Nome.Text;
-            p[dim].prezzo = float.Parse(Prezzo.Text);
+            p[dim].prezzo = double.Parse(Prezzo.Text);
             dim++;
             MessageBox.Show("Aggiunto");
             Nome.Clear();
@@ -44,7 +45,7 @@ namespace _19092023
         }
         public string prodString(prodotto p)
         {
-            return "Nome:" + p.nome + " prezzo:" + p.prezzo.ToString() + "€";
+            return p.nome + ": " + p.prezzo.ToString() + "€";
         }
         public void visualizza(prodotto[] pp)
         {
@@ -57,8 +58,19 @@ namespace _19092023
 
             }
         }
+        public void aggiorna(int dim)
+        {
+            ElencoProdotti.Items.Clear();
+            for (int i = 0; i < dim; i++)
+
+            {
+                ElencoProdotti.Items.Add(p[i].nome + ": " + p[i].prezzo.ToString() + "€");
+
+
+            }
+        }
         public string Ricerc;
-        private void Modifica_Click(object sender, EventArgs e)
+        private void ModificaNome_Click(object sender, EventArgs e)
         {
             Ricerc = Ricerca.Text;
             for (int i = 0; i < p.Length; ++i)
@@ -81,7 +93,7 @@ namespace _19092023
             {
                 if (p[i].nome == Ricerc)
                 {
-                    p[i].prezzo = float.Parse(NuovoPrezzo.Text);
+                    p[i].prezzo = double.Parse(NuovoPrezzo.Text);
                     MessageBox.Show("Modificato");
                     Ricerca.Clear();
                     NuovoPrezzo.Clear();
@@ -94,14 +106,60 @@ namespace _19092023
         private void Cancella_Click(object sender, EventArgs e)
         {
             Ricerc = Ricerca.Text;
-            for (int i = 0; i < p.Length; ++i)
+            for (int i = 0; i < dim; ++i)
             {
                 if (p[i].nome == Ricerc)
                 {
-                    
+                    for (int j = i; j> dim -1; j++)
+                    {
+                        p[j] = p[j + i];
+                    }
+                    dim--;
                     MessageBox.Show("Eliminato");
-                    break;
+                    aggiorna(dim);
+                    return;
                 }
+            }
+        }
+
+        private void Ordina_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Percent_Click(object sender, EventArgs e)
+        {
+            double percentuale; 
+            if(double.TryParse(Perce.Text, out percentuale))
+            {
+                for(int i = 0; i < dim; i++)
+                {
+                    p[i].prezzo += p[i].prezzo * (percentuale / 100); 
+                }
+                aggiorna(dim);
+                return;
+            }
+            {
+
+            }
+        }
+        private void Salva_Click(object sender, EventArgs e)
+        {
+            using (StreamWriter salva = new StreamWriter("Salva.Txt")
+            { 
+                for ( int i = 0; i < dim;i++)
+                {
+                    salva.WriteLine(p[i].nome + ": " + p[i].prezzo);
+                }
+            }
+        }
+    private void Leggi_Click(object sender, EventArgs e)
+    {
+        if (File.Exists("Salva.txt"))
+        {
+            using (StreamReader leggi = new StreamReader("Salva.Txt")
+            {
+
             }
         }
     }
