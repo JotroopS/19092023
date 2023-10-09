@@ -58,17 +58,6 @@ namespace _19092023
 
             }
         }
-        public void aggiorna(int dim)
-        {
-            ElencoProdotti.Items.Clear();
-            for (int i = 0; i < dim; i++)
-
-            {
-                ElencoProdotti.Items.Add(p[i].nome + ": " + p[i].prezzo.ToString() + "€");
-
-
-            }
-        }
         public string Ricerc;
         private void ModificaNome_Click(object sender, EventArgs e)
         {
@@ -106,60 +95,69 @@ namespace _19092023
         private void Cancella_Click(object sender, EventArgs e)
         {
             Ricerc = Ricerca.Text;
-            for (int i = 0; i < dim; ++i)
+            for (int i = 0; i < dim; i++)
             {
                 if (p[i].nome == Ricerc)
                 {
-                    for (int j = i; j> dim -1; j++)
+                    for (int j = i + 1; j > dim ; i++, j++)
                     {
-                        p[j] = p[j + i];
+                        p[i] = p[j];
                     }
                     dim--;
                     MessageBox.Show("Eliminato");
-                    aggiorna(dim);
-                    return;
+                    visualizza(p);
+                    break;
                 }
             }
         }
 
         private void Ordina_Click(object sender, EventArgs e)
         {
-            
+            var prodottiOrdinati = p.Take(dim).OrderBy(item => item.nome).ToArray();
+            Array.Copy(prodottiOrdinati, p, dim);
+            visualizza(p);
         }
 
         private void Percent_Click(object sender, EventArgs e)
         {
-            double percentuale; 
-            if(double.TryParse(Perce.Text, out percentuale))
+            double percentuale;
+            if (double.TryParse(Perce.Text, out percentuale))
             {
-                for(int i = 0; i < dim; i++)
+                for (int i = 0; i < dim; i++)
                 {
-                    p[i].prezzo += p[i].prezzo * (percentuale / 100); 
+                    p[i].prezzo += p[i].prezzo * (percentuale / 100);
                 }
-                aggiorna(dim);
+                visualizza(p);
                 return;
-            }
-            {
-
             }
         }
         private void Salva_Click(object sender, EventArgs e)
         {
-            using (StreamWriter salva = new StreamWriter("Salva.Txt")
-            { 
-                for ( int i = 0; i < dim;i++)
+                StreamWriter salva = new StreamWriter("Salva.Txt");
+                for (int i = 0; i < dim; i++)
                 {
-                    salva.WriteLine(p[i].nome + ": " + p[i].prezzo);
+                    salva.WriteLine(p[i].nome + ": " + p[i].prezzo + "€");
                 }
-            }
+                salva.Close();
+                MessageBox.Show("File salvato");
         }
-    private void Leggi_Click(object sender, EventArgs e)
-    {
-        if (File.Exists("Salva.txt"))
+        private void Leggi_Click(object sender, EventArgs e)
         {
-            using (StreamReader leggi = new StreamReader("Salva.Txt")
-            {
 
+            ElencoProdotti.Items.Clear();
+            string lettura;
+            if (File.Exists("Salva.txt"))
+            {
+                    StreamReader leggi = new StreamReader("Salva.Txt");
+                    lettura = leggi.ReadLine();
+                    while(lettura != null)
+                    {
+                        ElencoProdotti.Items.Add(lettura);
+                        lettura = leggi.ReadLine();
+                        dim++;
+                    }
+                    leggi.Close();
+                    MessageBox.Show("File letto correttamente");
             }
         }
     }
