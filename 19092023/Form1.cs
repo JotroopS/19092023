@@ -120,16 +120,13 @@ namespace _19092023
 
         private void Percent_Click(object sender, EventArgs e)
         {
-            double percentuale;
-            if (double.TryParse(Perce.Text, out percentuale))
-            {
+            double percentuale = Convert.ToDouble(Perce.Text);
                 for (int i = 0; i < dim; i++)
                 {
                     p[i].prezzo += p[i].prezzo * (percentuale / 100);
                 }
                 visualizza(p);
                 return;
-            }
         }
         private void Salva_Click(object sender, EventArgs e)
         {
