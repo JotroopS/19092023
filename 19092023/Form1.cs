@@ -94,21 +94,7 @@ namespace _19092023
 
         private void Cancella_Click(object sender, EventArgs e)
         {
-            Ricerc = Ricerca.Text;
-            for (int i = 0; i < dim; i++)
-            {
-                if (p[i].nome == Ricerc)
-                {
-                    for (int j = i + 1; j > dim ; i++, j++)
-                    {
-                        p[i] = p[j];
-                    }
-                    dim--;
-                    MessageBox.Show("Eliminato");
-                    visualizza(p);
-                    break;
-                }
-            }
+            
         }
 
         private void Ordina_Click(object sender, EventArgs e)
@@ -156,6 +142,72 @@ namespace _19092023
                     leggi.Close();
                     MessageBox.Show("File letto correttamente");
             }
+        }
+
+        private void Somma_Click(object sender, EventArgs e)
+        {
+            double tot = 0;
+            for (int i = 0; i < dim; i++)
+            {
+                tot += p[i].prezzo;
+            }
+            MessageBox.Show("Il prezzo totale è " + tot + "€");
+        }
+
+        private void Minimo_Click(object sender, EventArgs e)
+        {
+            double minf = 100000000000000000, min, min1;
+            for (int i = 0; i < dim; i++)
+            {
+                for (int j = i + 1; j < dim; j++)
+                {
+                   min = p[i].prezzo;
+                    min1 = p[j].prezzo;
+                    if(min < min1)
+                    {
+                        if (minf > min)
+                        {
+                            minf = min;
+                        }
+                    }
+                    else
+                    {
+                        if (minf > min1)
+                        {
+                            minf = min1;
+                        }
+                    }
+                }
+            }
+            MessageBox.Show("Il prezzo minimo è " + minf + "€");
+        }
+
+        private void Massimo_Click(object sender, EventArgs e)
+        {
+            double maxf = 0, max, max1;
+            for (int i = 0; i < dim; i++)
+            {
+                for (int j = i + 1; j < dim; j++)
+                {
+                    max = p[i].prezzo;
+                    max1 = p[j].prezzo;
+                    if (max > max1)
+                    {
+                        if (maxf < max)
+                        {
+                            maxf = max;
+                        }
+                    }
+                    else
+                    {
+                        if (maxf < max1)
+                        {
+                            maxf = max1;
+                        }
+                    }
+                }
+            }
+            MessageBox.Show("Il prezzo massimo è " + maxf + "€");
         }
     }
 }
